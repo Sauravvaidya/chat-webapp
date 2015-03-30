@@ -3,7 +3,7 @@
   angular
        .module('users')
        .controller('UserController', [
-          'userService', '$mdSidenav', '$mdBottomSheet', '$log', '$q',
+          'userService', '$mdSidenav', '$mdBottomSheet', '$log', '$q', '$firebaseArray',
           UserController
        ]);
 
@@ -14,14 +14,23 @@
    * @param avatarsService
    * @constructor
    */
-  function UserController( userService, $mdSidenav, $mdBottomSheet, $log, $q) {
+  function UserController( userService, $mdSidenav, $mdBottomSheet, $log, $q, $firebaseArray) {
     var self = this;
 
-    self.selected     = null;
+    self.selected     = {};
+    self.user         = {};
+    self.chatMessages = [ ];
+    self.userChatMessages = [ ];
     self.users        = [ ];
     self.selectUser   = selectUser;
+    self.sendMessage  = sendMessage;
     self.toggleList   = toggleUsersList;
+    self.loadDataFromFirebase = loadDataFromFirebase;
     self.share        = share;
+
+    var firebaseURL = 'https://amber-heat-630.firebaseio.com/';
+
+    // list.add({foo: 'bar'});
 
     // Load all registered users
 
@@ -29,7 +38,7 @@
           .loadAllUsers()
           .then( function( users ) {
             self.users    = [].concat(users);
-            self.selected = users[0];
+            // self.selected = users[0];  no default selection
           });
 
     // *********************************
@@ -52,9 +61,78 @@
      * Select the current avatars
      * @param menuId
      */
+    var list;
+    function loadDataFromFirebase () {
+      var conversationId = self.user.name+'-'+self.selected.name;
+      console.log(conversationId);
+
+      list = $firebaseArray(new Firebase(firebaseURL + conversationId));
+      list.$loaded().then(function(data) {
+        if(data.length > 0) {
+          angular.forEach(data, function(obj) {
+            // console.log(obj);
+            self.chatMessages = self.chatMessages.concat(obj);
+          })
+          // console.log(self.chatMessages);
+        }
+      });
+    }
+    
     function selectUser ( user ) {
+
+      self.chatMessages = [];
       self.selected = angular.isNumber(user) ? $scope.users[user] : user;
       self.toggleList();
+      self.loadDataFromFirebase();
+      // console.log(self.selected);
+    }
+
+    function sendMessage () {
+      // console.log(self.user.message);
+      list.$add({ message: self.selected.message}).then(function(ref) {
+
+        // var key = ref.key();
+        // console.log(key);
+        // var record = list.$getRecord(key);
+        // console.log('record added was: '+ record);
+        //list.$getRecord(key);
+        self.chatMessages = [];
+        self.selected.message = '';
+        self.loadDataFromFirebase()
+
+      });
+
+      var toUserList = $firebaseArray(new Firebase (firebaseURL + self.user.name));
+      toUserList.$add({ from: self.selected.name, message: self.selected.message}).then(function(ref) {
+
+      });
+      self.userChatMessages = [];
+      toUserList.$loaded().then(function (data) {
+        if(data.length > 0) {
+          angular.forEach(data, function (obj) {
+            self.userChatMessages = self.userChatMessages.concat(obj);
+          })
+        }
+      })
+
+      //input field is empty after the message has been sent
+    }
+
+    function userSendMessage () {
+
+      var conversationId = self.user.name +'-'+ self.user.sendTo;
+      var fromUserList = $firebaseArray(new Firebase (firebaseURL + conversationId));
+      fromUserList.$add({ from: self.user.name, message: self.user.message}).then(function(ref) {
+
+      })
+      fromUserList.$loaded().then(function (data) {
+        if(data.length > 0) {
+          angular.forEach(data, function (obj) {
+            self.chatMessages = self.chatMessages.concat(obj);
+          })
+        }
+      })
+
     }
 
     /**
@@ -65,7 +143,7 @@
 
         $mdBottomSheet.show({
           parent: angular.element(document.getElementById('content')),
-          templateUrl: '/src/users/view/contactSheet.html',
+          templateUrl: '/app/src/users/view/contactSheet.html',
           controller: [ '$mdBottomSheet', UserSheetController],
           controllerAs: "vm",
           bindToController : true,
