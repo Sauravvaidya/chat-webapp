@@ -1,3 +1,15 @@
-<div>
-	Login Page
+<!-- user who is logged in -->
+<div layout="column" layout-align="center center">
+  <div layout="row">
+    <md-input-container>
+      <label>Your name:</label>
+      <input type="text" ng-model="ul.user.name" required>
+    </md-input-container>
+  </div>
+
+  <div layout="row">
+    <md-button class="md-raised" ng-click="signIn()" ng-model="ul.user.name">
+        Sign In
+    </md-button>
+  </div>
 </div>

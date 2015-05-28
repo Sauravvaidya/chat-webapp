@@ -15,16 +15,20 @@ angular
   .config(function ($mdThemingProvider, $mdIconProvider, $locationProvider, $urlRouterProvider, $stateProvider){
     // $locationProvider.html5Mode(true);
 
-    // $urlRouterProvider.otherwise("/login")
+    $urlRouterProvider.otherwise("/login")
 
     $stateProvider
       .state('login', {
         url: '/login',
-        templateUrl: 'src/users/view/login.html'
+        templateUrl: 'src/users/view/login.html',
+        controller: 'UserController',
+        controllerAs: 'ul'
       })
       .state('chat', {
         url: '/chat',
-        templateUrl: 'src/users/view/chat.html'
+        templateUrl: 'src/users/view/chat.html',
+        controller: 'UserController',
+        controllerAs: 'ul'
       });
 
     // console.log('hahaha');

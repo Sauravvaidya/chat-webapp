@@ -3,7 +3,7 @@
   angular
        .module('users')
        .controller('UserController', [
-          'userService', '$mdSidenav', '$mdBottomSheet', '$log', '$q', '$firebaseArray',
+          'userService', '$mdSidenav', '$mdBottomSheet', '$log', '$q', '$firebaseArray', '$scope', '$state',
           UserController
        ]);
 
@@ -14,7 +14,7 @@
    * @param avatarsService
    * @constructor
    */
-  function UserController( userService, $mdSidenav, $mdBottomSheet, $log, $q, $firebaseArray) {
+  function UserController( userService, $mdSidenav, $mdBottomSheet, $log, $q, $firebaseArray, $scope, $state) {
     var self = this;
 
     self.selected     = {};
@@ -27,6 +27,11 @@
     self.toggleList   = toggleUsersList;
     self.loadDataFromFirebase = loadDataFromFirebase;
     self.share        = share;
+
+    // self.signIn = signIn;
+    $scope.signIn = function signIn(){
+      $state.go('chat');
+    };
 
     var firebaseURL = 'https://amber-heat-630.firebaseio.com/';
 
