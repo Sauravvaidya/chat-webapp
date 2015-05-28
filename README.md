@@ -1,3 +1,5 @@
+# To run the app: 
+	:~/material-start$ live-server ./app
 # Angular Material-Start 
 
 This Material **start*** project is a *seed* for AngularJS Materal applications. The project contains a sample AngularJS application and is preconfigured to install the Angular framework and a bunch of development and testing tools for instant web development gratification.
