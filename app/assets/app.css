@@ -124,6 +124,22 @@ md-toolbar h1 {
   -moz-transform:scale(0.70);
 }
 
+.message-by-me {
+  border-radius: 20px;
+  font-size: 16px;
+  padding: 10px;
+  background-color: #0288d1;
+  color: white;
+}
+
+.message-to-me {
+  border-radius: 20px;
+  font-size: 16px;
+  padding: 10px;
+  background-color: #d0f8ce;
+  color: black;
+}
+
 
 md-bottom-sheet  md-icon {
   margin-right:20px;

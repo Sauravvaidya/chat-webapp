@@ -21,7 +21,7 @@ angular
     $stateProvider
       .state('login', {
         url: '/login',
-        templateUrl: 'src/users/view/login.html',
+        templateUrl: 'src/users/view/signin.html',
         controller: 'SigninController'
       })
       .state('chat', {
@@ -43,6 +43,6 @@ angular
       .icon("phone"      , "./assets/svg/phone.svg"       , 512);
 
     $mdThemingProvider.theme('default')
-      .primaryPalette('brown')
+      .primaryPalette('indigo')
       .accentPalette('red');
   });

@@ -1,6 +1,7 @@
 <div layout="row" layout-align="space-between center">
   <md-button>
      You are logged in as: {{name}}
+    <md-icon md-svg-icon="{{ul.loggedInUserAvatar}}" class="avatar"></md-icon>
   </md-button>
   <md-button class="md-raised" href="#/login; $rootScope=''">
     Logout
@@ -10,7 +11,7 @@
   <!-- list of friends that the logged in user has -->
   <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-z2" md-component-id="left">
     <md-list>
-      <md-item ng-repeat="it in ul.users">
+      <md-item ng-repeat="it in ul.users" ng-if="it.name !== name">
           <md-button ng-click="ul.selectUser(it)" ng-class="{'selected' : it === ul.selected }">
             <md-icon md-svg-icon="{{it.avatar}}" class="avatar"></md-icon>
             {{it.name}}
@@ -23,18 +24,16 @@
   <md-content id="content" flex="55">
     <md-list>
 
-      <md-item layout="column" layout-align="space-between start" ng-repeat="cm in ul.chatMessagesWrittenByLoggedInUser track by $index">
-        <md-item-content>
-          <div>
-            <h4>{{cm.messageFromFriends}}</h4>
+      <md-item ng-repeat="cm in ul.chatMessagesWrittenByLoggedInUser track by $index">
+        <md-item-content layout="column" layout-align="space-between start" ng-if="cm.messageFromFriends          ">
+          <div class="message-to-me">
+            {{cm.messageFromFriends}}
           </div>
         </md-item-content>
-      </md-item>
 
-      <md-item layout="column" layout-align="space-between end" ng-repeat="cm in ul.chatMessagesWrittenByLoggedInUser track by $index">
-        <md-item-content>
-          <div>
-            <h4>{{cm.messageToFriends}}</h4>
+        <md-item-content layout="column" layout-align="space-between end" ng-if="cm.messageToFriends">
+          <div class="message-by-me">
+            {{cm.messageToFriends}}
           </div>
         </md-item-content>
       </md-item>
@@ -43,13 +42,13 @@
 
 <!--       <div layout="row">{{ul.selected.name}}</div> -->
     <!-- send button -->
-    <div layout="row" ng-if="ul.selected.name">
-      <md-input-container flex="85">
+    <div layout="row" style="padding-top: 20px;" ng-if="ul.selected.name">
+      <md-input-container flex="90">
         <label>Type your message here:</label>
         <input type="text" ng-model="ul.selected.message" required>
       </md-input-container>
 
-      <md-button class="md-raised" ng-click="ul.sendMessage()">Send</md-button>
+      <md-button class="md-raised md-primary md-default-theme" ng-click="ul.sendMessage()">Send</md-button>
     </div>
 
 <!--       <md-button class="share" md-no-ink ng-click="ul.share($event)" aria-label="Share">

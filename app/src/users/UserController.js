@@ -29,15 +29,24 @@
     self.toggleList   = toggleUsersList;
     self.loadDataFromFirebase = loadDataFromFirebase;
     self.share        = share;
+    self.loggedInUserAvatar = '';
 
     var firebaseURL = 'https://amber-heat-630.firebaseio.com/';
 
     // Load all registered users
 
     userService
-          .loadAllUsers($rootScope.name)
+          .loadAllUsers()
           .then( function( users ) {
             self.users    = [].concat(users);
+
+            angular.forEach(users, function (user) {
+              // console.log(user);
+              if(user.name == $rootScope.name) {
+                // console.log(user.name);
+                self.loggedInUserAvatar = user.avatar;
+              }
+            })
             // self.selected = users[0];  no default selection
           });
 
