@@ -1,10 +1,19 @@
 {
-  "name": "material-start",
+  "name": "Chat-Webapp",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A starter project for AngularJS Material",
   "repository": "https://github.com/angular/material-start",
   "license": "MIT",
+  "author": {
+    "name": "Saurav Vaidya",
+    "email": "saurav_4u@hotmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Angular Team"
+    }
+  ],
   "devDependencies": {
     "karma": "~0.10",
     "protractor": "^1.1.1",
