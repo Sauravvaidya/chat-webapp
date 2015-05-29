@@ -5,6 +5,7 @@ angular
   .module('starterApp', [
     'ngMaterial',
     'users',
+    'signin',
     'firebase',
     'ui.router'
   ])
@@ -21,8 +22,7 @@ angular
       .state('login', {
         url: '/login',
         templateUrl: 'src/users/view/login.html',
-        controller: 'UserController',
-        controllerAs: 'ul'
+        controller: 'SigninController'
       })
       .state('chat', {
         url: '/chat',
