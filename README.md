@@ -1,19 +1,17 @@
 # To run the app: 
 	:~/material-start$ live-server ./app
+
 # Angular Material-Start 
 
-This Material **start*** project is a *seed* for AngularJS Materal applications. The project contains a sample AngularJS application and is preconfigured to install the Angular framework and a bunch of development and testing tools for instant web development gratification.
-
-This sample application is intended to be useful as both a learning tool and a skeleton application for a typical [AngularJS Material](http://angularjs.org/) web app: comprised of a Side navigation area and a content area. You can use it to quickly bootstrap your angular webapp projects and dev environment for these
-projects.
+This is a simple chat web application. I started this as a hackathon project and using it for mostly learning purpose.
 
 ### What is the UX?
 
-Below is a snaphot of the Starter-App with the Users' *master-detail* view. Also shown is the user experience that will is displayed for smaller device sizes. The responsive layout changes to hide the user list, reveal the **menu** button. In the User Details view, you may also click the **share** button  to show the Contact &lt;User&gt; bottom sheet view.
+Below is a snaphot of the Chat WebApp.
 
 <br/>
 
-![material-starter-ux2](https://cloud.githubusercontent.com/assets/210413/6448551/70864488-c0e0-11e4-8767-c4e1e4c2f343.png)
+![chat-webapp-1.0](https://s3-eu-west-1.amazonaws.com/uploads-eu.hipchat.com/122816/1382585/1GSENuZKZ2uYB8U/upload.png)
 
 
 <br/>
