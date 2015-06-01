@@ -52,7 +52,7 @@ You will need **git** to clone the chat-webapp repository. You can get git from
 We also use a number of node.js tools to initialize and test material-start. You must have node.js and
 its package manager (npm) installed.  You can get them from [http://nodejs.org/](http://nodejs.org/).
 
-#### Clone material-start
+#### Clone chat-webapp
 
 To get you started you can simply clone `master` branch from the [Chat-Webapp](https://github.com/Sauravvaidya/chat-webapp) repository and install the dependencies:
 
