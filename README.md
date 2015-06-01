@@ -1,7 +1,7 @@
 # To run the app: 
 	:~/material-start$ live-server ./app
 
-# Angular Material-Start 
+# Chat Webapp 
 
 This is a simple chat web application. I started this as a hackathon project and using it for mostly learning purpose.
 
@@ -12,6 +12,8 @@ Below is a snaphot of the Chat WebApp.
 <br/>
 
 ![chat-webapp-1.0](https://s3-eu-west-1.amazonaws.com/uploads-eu.hipchat.com/122816/1382585/1GSENuZKZ2uYB8U/upload.png)
+
+![chat-webapp-1.0](https://s3-eu-west-1.amazonaws.com/uploads-eu.hipchat.com/122816/1382585/djTjxNERIKQvH26/upload.png)
 
 
 <br/>
@@ -44,7 +46,7 @@ Developers should checkout the following repository branches for:
 
 #### Prerequisites
 
-You will need **git** to clone the material-start repository. You can get git from
+You will need **git** to clone the chat-webapp repository. You can get git from
 [http://git-scm.com/](http://git-scm.com/).
 
 We also use a number of node.js tools to initialize and test material-start. You must have node.js and
@@ -52,21 +54,21 @@ its package manager (npm) installed.  You can get them from [http://nodejs.org/]
 
 #### Clone material-start
 
-To get you started you can simply clone `master` branch from the [Material-Start](https://github.com/angular/material-start) repository and install the dependencies:
+To get you started you can simply clone `master` branch from the [Chat-Webapp](https://github.com/Sauravvaidya/chat-webapp) repository and install the dependencies:
 
 > NOTE: The `master` branch contains the traditional, ES5 implementation familiar to Angular developers.
 
-Clone the material-start repository using [git][git]:
+Clone the chat-webapp repository using [git][git]:
 
 ```
-git clone https://github.com/angular/material-start.git
-cd material-start
+git clone https://github.com/Sauravvaidya/chat-webapp.git
+cd chat-webapp
 ```
 
 If you just want to start a new project without the material-start commit history then you can do:
 
 ```bash
-git clone --depth=1 https://github.com/angular/material-start.git <your-project-name>
+git clone --depth=1 https://github.com/Sauravvaidya/chat-webapp.git <your-project-name>
 ```
 
 The `depth=1` tells git to only pull down one commit worth of historical data.
@@ -98,15 +100,16 @@ it easier to serve the files by a webserver.*
 ## Directory Layout
 
 ```
-app/                    --> all of the source files for the application
-  assets/app.css        --> default stylesheet
-  src/           --> all app specific modules
-     users/              --> package for user features
-  index.html            --> app layout file (the main html template file of the app)
-karma.conf.js         --> config file for running unit tests with Karma
-e2e-tests/            --> end-to-end tests
-  protractor-conf.js    --> Protractor config file
-  scenarios.js          --> end-to-end scenarios to be run by Protractor
+app/ ---------------------> all of the source files for the application
+  assets/app.css ---------> default stylesheet
+  src/ -------------------> all app specific modules
+     users/ --------------> .js files as modules of the app (contains controllers, configs etc)
+     users/view ----------> all the templates pf the app (contains html files)
+  index.html -------------> app layout file (the main html template file of the app)
+karma.conf.js ------------> config file for running unit tests with Karma
+e2e-tests/ ---------------> end-to-end tests
+  protractor-conf.js -----> Protractor config file
+  scenarios.js -----------> end-to-end scenarios to be run by Protractor
 ```
 
 ## Updating Angular
