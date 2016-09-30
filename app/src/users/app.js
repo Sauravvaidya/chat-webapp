@@ -7,7 +7,8 @@ angular
     'users',
     'signin',
     'firebase',
-    'ui.router'
+    'ui.router',
+    'exchange'
   ])
   .controller('appController', function($scope) {
     console.log($scope);
@@ -29,6 +30,11 @@ angular
         templateUrl: 'src/users/view/chat.html',
         controller: 'UserController',
         controllerAs: 'ul'
+      })
+      .state('exchange', {
+        url: '/exchange',
+        templateUrl: 'src/users/view/exchange.html',
+        controller: 'ExchangeController'
       });
 
     // console.log('hahaha');

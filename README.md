@@ -1,5 +1,5 @@
 # To run the app: 
-	:~/material-start$ live-server ./app
+	:~/chat-webapp$ live-server --open=app
 
 # Chat Webapp 
 

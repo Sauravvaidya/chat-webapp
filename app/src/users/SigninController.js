@@ -11,4 +11,8 @@ angular
   		$rootScope.name = $scope.user.name;
   		$state.go('chat');
   	}
+
+    $scope.exchangePage = function exchangePage() {
+      $state.go('exchange');
+    }
   });

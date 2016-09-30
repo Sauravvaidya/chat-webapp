@@ -1,0 +1,32 @@
+<md-toolbar class="md-accent">
+	<h1>Exchange Rates for Nepal</h1>
+</md-toolbar>
+<div layout="row" layout-align="center center">
+	<md-content>
+		<md-list>
+			<md-list-item>
+				<h2 ng-class="{highlight: user.mg.exchangeRate > user.wu.exchangeRate}">Moneygram: 1 USD = {{user.mg.exchangeRate}} NPR</h2>
+			</md-list-item>
+			<md-list-item>
+				<h2 ng-class="{highlight: user.mg.exchangeRate < user.wu.exchangeRate}">Western Union: 1 USD = {{user.wu.exchangeRate}} NPR</h2>
+			</md-list-item>
+		</md-list>
+		<md-input-container>
+			<label>Amount</label>
+			<input ng-model="user.amount">
+		</md-input-container>
+      	<md-button class="md-raised" ng-click="calculateTotal()">
+         	Calculate
+      	</md-button>
+      	<md-list-item>
+			<h2 ng-class="{highlight: user.mg.total > user.wu.total}">Total for Moneygram: {{user.mg.total| currency:'Rs ':2}}</h2>
+		</md-list-item>
+		<md-list-item>
+			<h2 ng-class="{highlight: user.mg.total < user.wu.total}">Total for Western Union: {{user.wu.total| currency:'Rs ':2}}</h2>
+		</md-list-item>
+		<md-list-item>
+			<h2>Difference: {{user.diff| currency:'Rs ':2}}</h2>
+		</md-list-item>
+
+	</md-content>
+</div>
